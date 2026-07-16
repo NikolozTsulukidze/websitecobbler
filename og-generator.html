@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OG Image Generator — Cobbler Café</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #1a1008;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 24px;
+      font-family: system-ui, sans-serif;
+      padding: 32px 20px;
+    }
+    canvas {
+      border-radius: 10px;
+      box-shadow: 0 8px 48px rgba(0,0,0,.6);
+      max-width: 100%;
+      height: auto;
+    }
+    p {
+      color: rgba(245,234,204,.4);
+      font-size: .85rem;
+      text-align: center;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+    button {
+      padding: 14px 36px;
+      background: #C85068;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: .01em;
+      box-shadow: 0 4px 20px rgba(200,80,104,.4);
+      transition: background .2s;
+    }
+    button:hover { background: #D86078; }
+  </style>
+</head>
+<body>
+
+  <canvas id="c" width="1200" height="630"></canvas>
+  <button onclick="download()">Download og-image.png</button>
+  <p>Save this file as <strong style="color:rgba(245,234,204,.7)">og-image.png</strong> inside your website folder, then you're done.</p>
+
+  <script>
+    document.fonts.ready.then(draw);
+
+    function draw() {
+      const canvas = document.getElementById('c');
+      const ctx    = canvas.getContext('2d');
+      const W = 1200, H = 630;
+
+      // ── Background ──
+      ctx.fillStyle = '#E8D9BC';
+      ctx.fillRect(0, 0, W, H);
+
+      // ── Grid texture ──
+      ctx.strokeStyle = 'rgba(44,26,10,0.022)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x <= W; x += 4) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+      }
+      for (let y = 0; y <= H; y += 4) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+      }
+
+      // ── Berry glow — top right ──
+      const g1 = ctx.createRadialGradient(1060, 60, 0, 1060, 60, 400);
+      g1.addColorStop(0, 'rgba(200,80,104,0.20)');
+      g1.addColorStop(1, 'transparent');
+      ctx.fillStyle = g1;
+      ctx.fillRect(0, 0, W, H);
+
+      // ── Butter glow — bottom left ──
+      const g2 = ctx.createRadialGradient(140, 570, 0, 140, 570, 320);
+      g2.addColorStop(0, 'rgba(255,208,102,0.24)');
+      g2.addColorStop(1, 'transparent');
+      ctx.fillStyle = g2;
+      ctx.fillRect(0, 0, W, H);
+
+      // ── Thin top rule ──
+      ctx.strokeStyle = 'rgba(196,168,104,0.55)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(80, 72); ctx.lineTo(W - 80, 72);
+      ctx.stroke();
+
+      // ── Eyebrow ──
+      ctx.fillStyle = '#C85068';
+      ctx.font = '700 21px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      // manually spaced uppercase
+      ctx.fillText('OLD TBILISI  ·  KOTE AFKHAZI 34', W / 2, 190);
+
+      // ── Main title ──
+      ctx.fillStyle = '#7A1515';
+      ctx.font = 'italic bold 112px "Playfair Display", Georgia, "Times New Roman", serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('Cobbler Café', W / 2, 340);
+
+      // ── Tagline ──
+      ctx.fillStyle = '#7A5C3C';
+      ctx.font = '26px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('Handcrafted cobblers · Specialty coffee · Old Tbilisi', W / 2, 430);
+
+      // ── Decorative rule ──
+      ctx.strokeStyle = 'rgba(196,168,104,0.5)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(440, 480); ctx.lineTo(760, 480);
+      ctx.stroke();
+
+      // ── Thin bottom rule ──
+      ctx.strokeStyle = 'rgba(196,168,104,0.55)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(80, H - 72); ctx.lineTo(W - 80, H - 72);
+      ctx.stroke();
+
+      // ── Corner dots ──
+      [[80,72],[W-80,72],[80,H-72],[W-80,H-72]].forEach(([x,y]) => {
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(196,168,104,0.6)';
+        ctx.fill();
+      });
+    }
+
+    function download() {
+      const canvas = document.getElementById('c');
+      const link   = document.createElement('a');
+      link.download = 'og-image.png';
+      link.href     = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+</body>
+</html>

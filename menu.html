@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu — Cobbler Café</title>
+  <meta name="description" content="Full menu for Cobbler Café — cobblers, coffee, drinks, and snacks. Old Tbilisi, Kote Afkhazi 34.">
+  <meta property="og:title" content="Menu — Cobbler Café">
+  <meta property="og:description" content="Cobblers, specialty coffee, homemade lemonades, cocktails and snacks. Old Tbilisi, Kote Afkhazi 34.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://YOUR-DOMAIN.com/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --cream:   #E8D9BC;
+      --cream-2: #E2D2B0;
+      --surf:    #EEE4CA;
+      --bdr:     #C4A868;
+      --bdr-s:   #D4BC90;
+      --txt:     #2C1A0A;
+      --muted:   #7A5C3C;
+      --straw:   #C85068;
+      --straw-h: #D86078;
+      --butter:  #C47B20;
+      --gold:    #9A5E18;
+      --footer:  #1A1008;
+      --tab-h:   64px;
+    }
+    @media (prefers-color-scheme: dark) { :root {
+      --cream:#E8D9BC; --cream-2:#E2D2B0; --surf:#EEE4CA;
+      --bdr:#C4A868; --bdr-s:#D4BC90; --txt:#2C1A0A; --muted:#7A5C3C;
+      --straw:#C85068; --straw-h:#D86078; --butter:#C47B20; --gold:#9A5E18; --footer:#1A1008;
+    }}
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      background-image:
+        repeating-linear-gradient(0deg,  transparent, transparent 3px, rgba(44,26,10,.018) 3px, rgba(44,26,10,.018) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(44,26,10,.018) 3px, rgba(44,26,10,.018) 4px);
+      color: var(--txt);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TOP NAV ── */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(232,217,188,.97);
+      border-bottom: 1px solid var(--bdr-s);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #7A1515;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .back-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--txt); }
+    .wolt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #009DE0;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      box-shadow: 0 3px 12px rgba(0,157,224,.32);
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .wolt-btn:hover { background: #00B3FF; transform: translateY(-1px); }
+
+    /* ── MENU HEADER ── */
+    .menu-hero {
+      text-align: center;
+      padding: 48px 24px 36px;
+      border-bottom: 1px solid var(--bdr-s);
+    }
+    .eyebrow {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--straw);
+      margin-bottom: 10px;
+    }
+    .menu-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #7A1515;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .menu-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* ── CATEGORY TABS ── */
+    .cat-tabs-wrap {
+      position: sticky;
+      top: 58px;
+      z-index: 100;
+      background: rgba(232,217,188,.97);
+      border-bottom: 1px solid var(--bdr-s);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .cat-tabs {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .cat-tabs::-webkit-scrollbar { display: none; }
+    .cat-tab {
+      flex-shrink: 0;
+      padding: 14px 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      border-bottom: 2.5px solid transparent;
+      cursor: pointer;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: inherit;
+    }
+    .cat-tab:hover { color: var(--txt); }
+    .cat-tab.active {
+      color: var(--straw);
+      border-bottom-color: var(--straw);
+    }
+
+    /* ── CONTENT LAYOUT ── */
+    .menu-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* ── SECTION ── */
+    .menu-section {
+      padding-top: 48px;
+    }
+    .section-header {
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.45rem;
+      color: var(--txt);
+      line-height: 1.15;
+    }
+    .section-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .section-divider {
+      height: 1px;
+      background: var(--bdr-s);
+      margin: 16px 0 0;
+    }
+
+    /* ── COBBLER CARDS (photo grid) ── */
+    .cobbler-intro {
+      background: var(--surf);
+      border: 1px solid var(--bdr-s);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin: 20px 0 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .cobbler-intro-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .cobbler-intro-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .cobbler-intro-text strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--txt);
+      margin-bottom: 4px;
+    }
+    .cobbler-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    @media (max-width: 520px) { .cobbler-grid { grid-template-columns: 1fr; } }
+    .cobbler-card {
+      background: var(--surf);
+      border: 1px solid var(--bdr-s);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .cobbler-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(200,80,104,.12), 0 2px 8px rgba(61,26,26,.06);
+    }
+    .cobbler-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .cobbler-body {
+      padding: 14px 16px 18px;
+    }
+    .cobbler-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--txt);
+      margin-bottom: 4px;
+    }
+    .cobbler-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .cobbler-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .cobbler-price {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+      font-variant-numeric: tabular-nums;
+    }
+    .badge-best {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #fff;
+      background: var(--straw);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    /* ── TOPPINGS CHIPS ── */
+    .toppings-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+      margin: 24px 0 10px;
+    }
+    .toppings-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .topping-chip {
+      font-size: 0.78rem;
+      color: var(--muted);
+      border: 1px solid var(--bdr-s);
+      background: var(--surf);
+      padding: 5px 13px;
+      border-radius: 999px;
+    }
+
+    /* ── STANDARD ITEM ROW ── */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .item-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(212,188,144,.45);
+    }
+    .item-row:last-child { border-bottom: none; }
+    .item-left { flex: 1; }
+    .item-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--txt);
+      margin-bottom: 3px;
+    }
+    .item-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .item-price {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+    .item-price-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* ── LUNCH COMBO CARD ── */
+    .combo-card {
+      background: var(--surf);
+      border: 1.5px solid var(--bdr);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .combo-text { flex: 1; min-width: 220px; }
+    .combo-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--butter);
+      margin-bottom: 6px;
+    }
+    .combo-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--txt);
+      margin-bottom: 6px;
+    }
+    .combo-includes {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .combo-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .combo-price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+    .combo-hours {
+      font-size: 0.72rem;
+      color: var(--straw);
+      font-weight: 700;
+      margin-top: 6px;
+      letter-spacing: .04em;
+    }
+
+    /* ── SPECIAL DRINKS BANNER ── */
+    .special-banner {
+      background: linear-gradient(135deg, #7A1515 0%, #9A2525 100%);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin: 20px 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .special-banner-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .special-banner-text {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,.85);
+      line-height: 1.5;
+    }
+    .special-banner-text strong {
+      display: block;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--footer);
+      color: rgba(245,234,204,.5);
+      padding: 40px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #F5EACC;
+    }
+    .footer-address {
+      font-size: 0.78rem;
+      color: rgba(245,234,204,.35);
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    /* ── FOCUS ── */
+    :focus-visible { outline: 2px solid var(--straw); outline-offset: 3px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <header id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Cobbler Café</a>
+      <div class="nav-right">
+        <a href="index.html" class="back-link">← Home</a>
+        <a href="https://wolt.com/en/geo/tbilisi/restaurant/cobbler-more"
+           class="wolt-btn" target="_blank" rel="noopener"
+           aria-label="Order on Wolt — opens in new tab">
+          🛵 Order on Wolt
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="menu-hero">
+    <p class="eyebrow">Old Tbilisi · Kote Afkhazi 34</p>
+    <h1 class="menu-title">Our Menu</h1>
+    <p class="menu-sub">Dine in · Delivery via Wolt · Mon–Fri 10:00–22:00 · Sat–Sun 09:00–23:00</p>
+  </div>
+
+  <!-- CATEGORY TABS -->
+  <div class="cat-tabs-wrap" role="navigation" aria-label="Menu categories">
+    <div class="cat-tabs" id="cat-tabs">
+      <button class="cat-tab active" data-target="cobblers">Cobblers</button>
+      <button class="cat-tab" data-target="lunch">Lunch Combo</button>
+      <button class="cat-tab" data-target="coffee">Coffee</button>
+      <button class="cat-tab" data-target="tea">Tea</button>
+      <button class="cat-tab" data-target="drinks">Drinks</button>
+      <button class="cat-tab" data-target="alcohol">Cocktails</button>
+      <button class="cat-tab" data-target="snacks">Snacks</button>
+    </div>
+  </div>
+
+  <!-- MENU BODY -->
+  <main class="menu-body">
+
+    <!-- ── COBBLERS ── -->
+    <section class="menu-section" id="cobblers" aria-labelledby="title-cobblers">
+      <div class="section-header">
+        <p class="eyebrow">Signature Desserts</p>
+        <h2 class="section-title" id="title-cobblers">Cobblers</h2>
+        <p class="section-note">Pick your fruit filling + crumble + toppings · All 15 ₾</p>
+      </div>
+      <div class="section-divider"></div>
+
+      <div class="cobbler-intro">
+        <div class="cobbler-intro-icon">🍑</div>
+        <div class="cobbler-intro-text">
+          <strong>Build your own cobbler</strong>
+          Choose a fruit filling below. Add toppings to customise. Served warm — eat it while it's hot.
+        </div>
+      </div>
+
+      <div class="cobbler-grid">
+        <article class="cobbler-card">
+          <img class="cobbler-img" src="berry.avif" alt="Berry Cobbler">
+          <div class="cobbler-body">
+            <h3 class="cobbler-name">Berry Cobbler</h3>
+            <p class="cobbler-desc">Wild berry filling, golden crumble topping. Ask for Dubai chocolate drizzle — it's the combination that brings people back.</p>
+            <div class="cobbler-footer">
+              <span class="cobbler-price">15 ₾</span>
+              <span class="badge-best">Best Seller</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cobbler-card">
+          <img class="cobbler-img" src="tiramisu.avif" alt="Tiramisu Cobbler">
+          <div class="cobbler-body">
+            <h3 class="cobbler-name">Tiramisu</h3>
+            <p class="cobbler-desc">Espresso, mascarpone, cocoa dust — with a warm crumble topping. Everything great about tiramisu, served hot.</p>
+            <div class="cobbler-footer">
+              <span class="cobbler-price">15 ₾</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cobbler-card">
+          <img class="cobbler-img" src="mangoandmaracuya.avif" alt="Mango & Maracuja Cobbler">
+          <div class="cobbler-body">
+            <h3 class="cobbler-name">Mango &amp; Maracuja</h3>
+            <p class="cobbler-desc">Tropical and sharp. The maracuya cuts through the mango's sweetness so the whole thing stays alive on the palate.</p>
+            <div class="cobbler-footer">
+              <span class="cobbler-price">15 ₾</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="cobbler-card">
+          <img class="cobbler-img" src="applecinnamon.avif" alt="Apple-Cinnamon Cobbler">
+          <div class="cobbler-body">
+            <h3 class="cobbler-name">Apple-Cinnamon</h3>
+            <p class="cobbler-desc">The one your grandmother would recognize — and the one she'd admit she'd never made quite this well.</p>
+            <div class="cobbler-footer">
+              <span class="cobbler-price">15 ₾</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="toppings-label">Optional toppings</p>
+      <div class="toppings-row">
+        <span class="topping-chip">Dubai Chocolate Drizzle</span>
+        <span class="topping-chip">Vanilla Ice Cream · 5 ₾</span>
+        <span class="topping-chip">Caramel Drizzle</span>
+        <span class="topping-chip">Whipped Cream</span>
+        <span class="topping-chip">Coconut Cream</span>
+        <span class="topping-chip">Pistachios</span>
+      </div>
+    </section>
+
+    <!-- ── LUNCH COMBO ── -->
+    <section class="menu-section" id="lunch" aria-labelledby="title-lunch">
+      <div class="section-header">
+        <p class="eyebrow">Daily Special</p>
+        <h2 class="section-title" id="title-lunch">Lunch Combo</h2>
+      </div>
+      <div class="section-divider"></div>
+
+      <div class="combo-card">
+        <div class="combo-text">
+          <p class="combo-label">Available daily</p>
+          <p class="combo-name">Lunch Combo</p>
+          <p class="combo-includes">
+            Salmon Bagel (salmon, cream cheese, pesto)<br>
+            + Mango &amp; Maracuja Homemade Lemonade
+          </p>
+        </div>
+        <div class="combo-right">
+          <p class="combo-price">23.5 ₾</p>
+          <p class="combo-hours">13:00 – 16:00 only</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COFFEE ── -->
+    <section class="menu-section" id="coffee" aria-labelledby="title-coffee">
+      <div class="section-header">
+        <p class="eyebrow">Specialty</p>
+        <h2 class="section-title" id="title-coffee">Coffee</h2>
+        <p class="section-note">Hot / Iced where two prices shown</p>
+      </div>
+      <div class="section-divider"></div>
+
+      <div class="special-banner">
+        <span class="special-banner-icon">✨</span>
+        <div class="special-banner-text">
+          <strong>Special Drinks</strong>
+          Iced Latte &amp; Saperavi Sour — ask your server for today's special
+        </div>
+      </div>
+
+      <div class="item-list" role="list">
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Espresso</p>
+          </div>
+          <p class="item-price">7 / 9 ₾ <span class="item-price-note">hot/iced</span></p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Americano</p>
+          </div>
+          <p class="item-price">8 / 10 ₾ <span class="item-price-note">hot/iced</span></p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Macchiato</p>
+          </div>
+          <p class="item-price">9 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Long Black</p>
+          </div>
+          <p class="item-price">10 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Cappuccino</p>
+          </div>
+          <p class="item-price">10 / 12 ₾ <span class="item-price-note">hot/iced</span></p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Flat White</p>
+          </div>
+          <p class="item-price">11 / 13 ₾ <span class="item-price-note">hot/iced</span></p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Latte</p>
+          </div>
+          <p class="item-price">13 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Turkish Coffee</p>
+          </div>
+          <p class="item-price">5 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Espresso Tonic</p>
+          </div>
+          <p class="item-price">12 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Mocha</p>
+          </div>
+          <p class="item-price">14 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Pistachio Affogato</p>
+            <p class="item-desc">Espresso poured over pistachio ice cream</p>
+          </div>
+          <p class="item-price">14 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Iced Coffee with Ice Cream</p>
+          </div>
+          <p class="item-price">14 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Chocolate Frappé</p>
+          </div>
+          <p class="item-price">14 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Bambol Coffee</p>
+          </div>
+          <p class="item-price">14 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Raf Coffee</p>
+          </div>
+          <p class="item-price">14 ₾</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TEA ── -->
+    <section class="menu-section" id="tea" aria-labelledby="title-tea">
+      <div class="section-header">
+        <p class="eyebrow">Hot &amp; Iced</p>
+        <h2 class="section-title" id="title-tea">Tea</h2>
+      </div>
+      <div class="section-divider"></div>
+
+      <div class="item-list" role="list">
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Black / Green / Berry Tea</p>
+          </div>
+          <p class="item-price">7 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Matcha Latte</p>
+          </div>
+          <p class="item-price">14 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Iced Strawberry Matcha Latte</p>
+          </div>
+          <p class="item-price">14.5 ₾</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DRINKS ── -->
+    <section class="menu-section" id="drinks" aria-labelledby="title-drinks">
+      <div class="section-header">
+        <p class="eyebrow">Cold &amp; Warm</p>
+        <h2 class="section-title" id="title-drinks">Drinks</h2>
+      </div>
+      <div class="section-divider"></div>
+
+      <div class="item-list" role="list">
+
+        <!-- Smoothies -->
+        <div class="item-row" role="listitem" style="padding-bottom:6px;border-bottom:none;">
+          <div class="item-left">
+            <p class="item-name" style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Smoothies</p>
+          </div>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Strawberry / Berry Smoothie</p>
+          </div>
+          <p class="item-price">13.95 ₾</p>
+        </div>
+
+        <!-- Lemonades -->
+        <div class="item-row" role="listitem" style="padding-bottom:6px;border-bottom:none;padding-top:24px;">
+          <div class="item-left">
+            <p class="item-name" style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Homemade Lemonades</p>
+          </div>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Mango &amp; Maracuja</p>
+          </div>
+          <p class="item-price">12.95 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Berries</p>
+          </div>
+          <p class="item-price">12.95 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Mint &amp; Lime</p>
+          </div>
+          <p class="item-price">12.95 ₾</p>
+        </div>
+
+        <!-- Hot Chocolate -->
+        <div class="item-row" role="listitem" style="padding-bottom:6px;border-bottom:none;padding-top:24px;">
+          <div class="item-left">
+            <p class="item-name" style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Hot Chocolate</p>
+          </div>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Hot Chocolate</p>
+          </div>
+          <p class="item-price">12 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Hot Chocolate with Rum</p>
+          </div>
+          <p class="item-price">17 ₾</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ALCOHOLIC ── -->
+    <section class="menu-section" id="alcohol" aria-labelledby="title-alcohol">
+      <div class="section-header">
+        <p class="eyebrow">Alcoholic Beverages</p>
+        <h2 class="section-title" id="title-alcohol">Cocktails &amp; Wine</h2>
+      </div>
+      <div class="section-divider"></div>
+
+      <div class="item-list" role="list">
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Mulled Wine</p>
+            <p class="item-desc">Warm spiced Georgian wine</p>
+          </div>
+          <p class="item-price">15 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Sangria</p>
+          </div>
+          <p class="item-price">15 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Saperavi Sour</p>
+            <p class="item-desc">House cocktail with Georgian Saperavi wine</p>
+          </div>
+          <p class="item-price">23 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">All Other Cocktails</p>
+          </div>
+          <p class="item-price">23 ₾</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SNACKS ── -->
+    <section class="menu-section" id="snacks" aria-labelledby="title-snacks">
+      <div class="section-header">
+        <p class="eyebrow">Light bites</p>
+        <h2 class="section-title" id="title-snacks">Snacks</h2>
+      </div>
+      <div class="section-divider"></div>
+
+      <div class="item-list" role="list">
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Salmon Bagel</p>
+            <p class="item-desc">Salmon, cream cheese, pesto</p>
+          </div>
+          <p class="item-price">17 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Ham Bagel</p>
+            <p class="item-desc">Ham, cheddar, pesto</p>
+          </div>
+          <p class="item-price">15 ₾</p>
+        </div>
+        <div class="item-row" role="listitem">
+          <div class="item-left">
+            <p class="item-name">Vanilla Ice Cream</p>
+          </div>
+          <p class="item-price">5 ₾</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-brand">Cobbler Café</p>
+      <address class="footer-address" style="font-style:normal">
+        34 Kote Afkhazi Street · Old Tbilisi<br>
+        Mon–Fri 10:00–22:00 · Sat–Sun 09:00–23:00
+      </address>
+    </div>
+  </footer>
+
+  <script>
+    // ── Sticky tab active state on scroll ──
+    const sections = document.querySelectorAll('.menu-section');
+    const tabs     = document.querySelectorAll('.cat-tab');
+    const NAV_H    = 58 + 44 + 16; // top nav + tabs + buffer
+
+    function getActive() {
+      let active = sections[0].id;
+      sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top <= NAV_H + 10) active = sec.id;
+      });
+      return active;
+    }
+
+    function syncTabs() {
+      const active = getActive();
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.target === active));
+      // scroll active tab into view in the tab bar
+      const activeTab = document.querySelector(`.cat-tab[data-target="${active}"]`);
+      if (activeTab) {
+        activeTab.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+      }
+    }
+
+    window.addEventListener('scroll', syncTabs, { passive: true });
+
+    // ── Click tab → scroll to section ──
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = document.getElementById(tab.dataset.target);
+        if (!target) return;
+        const y = target.getBoundingClientRect().top + window.scrollY - NAV_H + 1;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
