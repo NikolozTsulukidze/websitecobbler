@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" href="/Favicon.png">
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="icon" href="Favicon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cobbler Café, Dessert Café & Coffee in Old Tbilisi, Georgia</title>
 
@@ -1057,14 +1058,12 @@
           </div>
 
           <div class="reveal">
-            <iframe
-              src="https://maps.google.com/maps?q=34+Kote+Afkhazi+Street,+Tbilisi,+Georgia&output=embed&z=17"
-              width="100%" height="340"
-              style="border:0;border-radius:16px;display:block;box-shadow:0 8px 32px rgba(44,26,10,0.14)"
-              loading="lazy"
-              allowfullscreen
-              aria-label="Map of Cobbler and More at 34 Kote Afkhazi St, Tbilisi">
-            </iframe>
+            <div id="map-wrap">
+              <div id="map-placeholder" style="background:var(--cream-2);border:1.5px dashed var(--bdr);height:340px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px;">
+                <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">Map requires cookie consent.<br>Accept below to view the embedded map.</p>
+                <a href="https://maps.google.com/maps?q=34+Kote+Afkhazi+Street,+Tbilisi,+Georgia" target="_blank" rel="noopener" style="font-size:0.8rem;font-weight:700;color:var(--straw);border-bottom:1.5px solid rgba(200,80,104,0.25);padding-bottom:2px;">Open in Google Maps ↗</a>
+              </div>
+            </div>
             <p style="font-size:.72rem;color:var(--muted);margin-top:10px;text-align:center;font-style:italic">34 Kote Afkhazi Street · Old Tbilisi</p>
           </div>
         </div>
@@ -1106,6 +1105,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="location.html">Location &amp; Delivery</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
           </ul>
         </div>
         <div>
@@ -1124,6 +1124,38 @@
       </div>
     </div>
   </footer>
+
+  <!-- ── COOKIE BANNER ── -->
+  <style>
+    #cookie-banner { display:none;position:fixed;bottom:0;left:0;right:0;z-index:500;background:#1A1008;border-top:1px solid rgba(255,208,102,0.15);padding:16px 28px; }
+    .ck-inner { max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap; }
+    .ck-text { flex:1;min-width:200px;font-size:0.8rem;color:rgba(245,234,204,0.65);line-height:1.6; }
+    .ck-text a { color:rgba(255,208,102,0.8);border-bottom:1px solid rgba(255,208,102,0.3); }
+    .ck-btns { display:flex;gap:10px;flex-shrink:0; }
+    #cookie-decline { font-size:0.78rem;font-weight:600;color:rgba(245,234,204,0.5);background:none;border:1px solid rgba(245,234,204,0.2);padding:0 18px;height:44px;border-radius:999px;cursor:pointer;font-family:inherit;transition:color 0.2s,border-color 0.2s; }
+    #cookie-decline:hover { color:rgba(245,234,204,0.8);border-color:rgba(245,234,204,0.5); }
+    #cookie-accept { font-size:0.78rem;font-weight:700;color:#fff;background:#C85068;border:none;padding:0 22px;height:44px;border-radius:999px;cursor:pointer;font-family:inherit;transition:background 0.2s; }
+    #cookie-accept:hover { background:#D86078; }
+    @media (max-width:520px) {
+      #cookie-banner { padding:16px 16px; }
+      .ck-inner { flex-direction:column;align-items:stretch;gap:12px; }
+      .ck-text { min-width:0; }
+      .ck-btns { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+      #cookie-decline, #cookie-accept { width:100%; }
+    }
+  </style>
+  <div id="cookie-banner">
+    <div class="ck-inner">
+      <p class="ck-text">
+        We use Google Fonts and Google Maps, which send your IP address to Google and may set cookies.
+        <a href="privacy.html">Privacy Policy</a>
+      </p>
+      <div class="ck-btns">
+        <button id="cookie-decline">Decline</button>
+        <button id="cookie-accept">Accept</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Nav scroll
@@ -1157,6 +1189,36 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+
+    // Cookie consent
+    (function () {
+      var CONSENT_KEY = 'cobbler_cookie_consent';
+      var banner = document.getElementById('cookie-banner');
+      var stored = localStorage.getItem(CONSENT_KEY);
+
+      function loadMap() {
+        var wrap = document.getElementById('map-wrap');
+        if (!wrap) return;
+        wrap.innerHTML = '<iframe src="https://maps.google.com/maps?q=34+Kote+Afkhazi+Street,+Tbilisi,+Georgia&output=embed&z=17" width="100%" height="340" style="border:0;border-radius:16px;display:block;box-shadow:0 8px 32px rgba(44,26,10,0.14)" loading="lazy" allowfullscreen aria-label="Map of Cobbler and More at 34 Kote Afkhazi St, Tbilisi"></iframe>';
+      }
+
+      if (stored === 'accepted') {
+        loadMap();
+      } else if (!stored) {
+        banner.style.display = 'block';
+      }
+
+      document.getElementById('cookie-accept').addEventListener('click', function () {
+        localStorage.setItem(CONSENT_KEY, 'accepted');
+        banner.style.display = 'none';
+        loadMap();
+      });
+
+      document.getElementById('cookie-decline').addEventListener('click', function () {
+        localStorage.setItem(CONSENT_KEY, 'declined');
+        banner.style.display = 'none';
+      });
+    })();
   </script>
 
 </body>

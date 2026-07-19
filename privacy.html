@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="icon" href="Favicon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy · Cobbler Café</title>
+  <meta name="description" content="Privacy policy for Cobbler Café. Learn how we handle data and which third-party services we use.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:   #E8D9BC;
+      --cream-2: #E2D2B0;
+      --surf:    #EEE4CA;
+      --bdr:     #C4A868;
+      --bdr-s:   #D4BC90;
+      --txt:     #2C1A0A;
+      --muted:   #7A5C3C;
+      --straw:   #C85068;
+      --butter:  #C47B20;
+      --gold:    #9A5E18;
+      --footer:  #1A1008;
+    }
+    @media (prefers-color-scheme: dark) { :root {
+      --cream:#E8D9BC; --cream-2:#E2D2B0; --surf:#EEE4CA;
+      --bdr:#C4A868; --bdr-s:#D4BC90; --txt:#2C1A0A; --muted:#7A5C3C;
+      --straw:#C85068; --butter:#C47B20; --gold:#9A5E18; --footer:#1A1008;
+    }}
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      background-image:
+        repeating-linear-gradient(0deg,  transparent, transparent 3px, rgba(44,26,10,.018) 3px, rgba(44,26,10,.018) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(44,26,10,.018) 3px, rgba(44,26,10,.018) 4px);
+      color: var(--txt);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(232,217,188,.97);
+      border-bottom: 1px solid var(--bdr-s);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #7A1515;
+    }
+    .back-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--txt); }
+
+    /* PAGE HEADER */
+    .page-header {
+      border-bottom: 1px solid var(--bdr-s);
+      padding: 48px 28px 36px;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--straw);
+      margin-bottom: 10px;
+    }
+    .page-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: #7A1515;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .page-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* POLICY BODY */
+    .policy-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 28px 96px;
+    }
+
+    .policy-section {
+      margin-bottom: 48px;
+    }
+    .policy-section h2 {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--txt);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--bdr-s);
+    }
+    .policy-section p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-section ul {
+      list-style: none;
+      margin: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .policy-section ul li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    .policy-section ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--bdr);
+    }
+    .policy-section a {
+      color: var(--straw);
+      border-bottom: 1px solid rgba(200,80,104,0.3);
+      transition: border-color .2s;
+    }
+    .policy-section a:hover { border-color: var(--straw); }
+
+    /* Consent reset button */
+    .consent-reset {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      background: var(--surf);
+      border: 1.5px solid var(--bdr-s);
+      color: var(--muted);
+      padding: 0 22px;
+      height: 44px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color .2s, color .2s;
+    }
+    .consent-reset:hover { border-color: var(--straw); color: var(--straw); }
+
+    /* FOOTER */
+    footer {
+      background: var(--footer);
+      color: rgba(245,234,204,.5);
+      padding: 40px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #F5EACC;
+    }
+    .footer-links-row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .footer-links-row a {
+      font-size: 0.78rem;
+      color: rgba(245,234,204,.35);
+      transition: color .2s;
+    }
+    .footer-links-row a:hover { color: rgba(245,234,204,.7); }
+
+    :focus-visible { outline: 2px solid var(--straw); outline-offset: 3px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <header id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Cobbler Café</a>
+      <a href="index.html" class="back-link">← Home</a>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <p class="eyebrow">Legal</p>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Last updated: July 2025</p>
+  </div>
+
+  <main class="policy-wrap">
+
+    <div class="policy-section">
+      <h2>Who we are</h2>
+      <p>Cobbler Café is a dessert café located at 34 Kote Afkhazi Street, Old Tbilisi, Georgia. This privacy policy explains how our website (cobblercafe.ge) handles data when you visit it.</p>
+      <p>We do not run advertising, we do not sell data, and we do not use analytics services. This site exists to show you our menu and tell you how to find us.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Data we collect directly</h2>
+      <p>We collect no personal data directly. This site has no contact forms, no newsletter sign-up, no login, and no order system. Any orders placed through Wolt are handled entirely by Wolt under their own privacy policy.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Third-party services</h2>
+      <p>This site loads content from third-party providers. When these load, your browser makes a request to their servers, which means your IP address is sent to them. Below is a full list:</p>
+
+      <ul>
+        <li><strong>Google Fonts</strong> — We load the Playfair Display typeface from Google's servers (fonts.googleapis.com). This sends your IP address to Google. Google's privacy policy applies: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+        <li><strong>Google Maps</strong> — The map on our homepage is an embedded Google Maps iframe. It only loads if you accept cookies. When it loads, Google may set cookies and receives your IP address.</li>
+        <li><strong>Wolt</strong> — The "Order on Wolt" buttons link to Wolt's external website. We share no data with Wolt; their privacy policy applies once you click through.</li>
+        <li><strong>Instagram</strong> — The "@cobbler_cafe" button links to Instagram. No data is shared until you click.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Cookies</h2>
+      <p>We set one cookie of our own:</p>
+      <ul>
+        <li><strong>cobbler_cookie_consent</strong> — Stores your accept or decline choice so we don't ask again. Stored in your browser's localStorage. Contains no personal data. Never sent to any server.</li>
+      </ul>
+      <p>If you accept cookies, Google Maps may set its own cookies when the map loads. These are Google's cookies, governed by their policy.</p>
+      <p>Google Fonts does not set persistent cookies but does receive your IP address on each page load as part of the font request.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Your rights</h2>
+      <p>Under GDPR (if you are in the European Economic Area) and similar laws, you have the right to:</p>
+      <ul>
+        <li>Know what data is held about you</li>
+        <li>Request deletion of your data</li>
+        <li>Object to processing of your data</li>
+        <li>Withdraw consent at any time</li>
+        <li>Lodge a complaint with your local supervisory authority</li>
+      </ul>
+      <p>Since we hold no personal data directly, most requests will need to be directed to the third-party services listed above. For anything related to our site specifically, contact us at the address below.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Withdraw or change consent</h2>
+      <p>You can reset your cookie choice at any time. This removes your saved preference and shows the cookie notice again on your next visit.</p>
+      <button class="consent-reset" id="reset-consent">Reset cookie preferences</button>
+    </div>
+
+    <div class="policy-section">
+      <h2>Contact</h2>
+      <p>For privacy-related questions, reach us at:</p>
+      <p>
+        Cobbler Café<br>
+        34 Kote Afkhazi Street, Old Tbilisi, Georgia
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-brand">Cobbler Café</p>
+      <div class="footer-links-row">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('reset-consent').addEventListener('click', function () {
+      localStorage.removeItem('cobbler_cookie_consent');
+      alert('Cookie preference reset. The notice will appear again on your next visit.');
+    });
+  </script>
+
+</body>
+</html>

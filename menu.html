@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="icon" href="Favicon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu — Cobbler Café</title>
-  <meta name="description" content="Full menu for Cobbler Café — cobblers, coffee, drinks, and snacks. Old Tbilisi, Kote Afkhazi 34.">
-  <meta property="og:title" content="Menu — Cobbler Café">
+  <title>Menu, Cobbler Café</title>
+  <meta name="description" content="Full menu for Cobbler Café, cobblers, coffee, drinks, and snacks. Old Tbilisi, Kote Afkhazi 34.">
+  <meta property="og:title" content="Menu, Cobbler Café">
   <meta property="og:description" content="Cobblers, specialty coffee, homemade lemonades, cocktails and snacks. Old Tbilisi, Kote Afkhazi 34.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.png">
@@ -483,7 +485,7 @@
         <a href="index.html" class="back-link">← Home</a>
         <a href="https://wolt.com/en/geo/tbilisi/restaurant/cobbler-more"
            class="wolt-btn" target="_blank" rel="noopener"
-           aria-label="Order on Wolt — opens in new tab">
+           aria-label="Order on Wolt, opens in new tab">
           🛵 Order on Wolt
         </a>
       </div>
@@ -526,7 +528,7 @@
         <div class="cobbler-intro-icon">🍑</div>
         <div class="cobbler-intro-text">
           <strong>Build your own cobbler</strong>
-          Choose a fruit filling below. Add toppings to customise. Served warm — eat it while it's hot.
+          Choose a fruit filling below. Add toppings to customise. Served warm, eat it while it's hot.
         </div>
       </div>
 
@@ -535,7 +537,7 @@
           <img class="cobbler-img" src="berry.avif" alt="Berry Cobbler">
           <div class="cobbler-body">
             <h3 class="cobbler-name">Berry Cobbler</h3>
-            <p class="cobbler-desc">Wild berry filling, golden crumble topping. Ask for Dubai chocolate drizzle — it's the combination that brings people back.</p>
+            <p class="cobbler-desc">Wild berry filling, golden crumble topping. Ask for Dubai chocolate drizzle, it's the combination that brings people back.</p>
             <div class="cobbler-footer">
               <span class="cobbler-price">15 ₾</span>
               <span class="badge-best">Best Seller</span>
@@ -547,7 +549,7 @@
           <img class="cobbler-img" src="tiramisu.avif" alt="Tiramisu Cobbler">
           <div class="cobbler-body">
             <h3 class="cobbler-name">Tiramisu</h3>
-            <p class="cobbler-desc">Espresso, mascarpone, cocoa dust — with a warm crumble topping. Everything great about tiramisu, served hot.</p>
+            <p class="cobbler-desc">Espresso, mascarpone, cocoa dust, with a warm crumble topping. Everything great about tiramisu, served hot.</p>
             <div class="cobbler-footer">
               <span class="cobbler-price">15 ₾</span>
             </div>
@@ -569,7 +571,7 @@
           <img class="cobbler-img" src="applecinnamon.avif" alt="Apple-Cinnamon Cobbler">
           <div class="cobbler-body">
             <h3 class="cobbler-name">Apple-Cinnamon</h3>
-            <p class="cobbler-desc">The one your grandmother would recognize — and the one she'd admit she'd never made quite this well.</p>
+            <p class="cobbler-desc">The one your grandmother would recognize, and the one she'd admit she'd never made quite this well.</p>
             <div class="cobbler-footer">
               <span class="cobbler-price">15 ₾</span>
             </div>
@@ -625,7 +627,7 @@
         <span class="special-banner-icon">✨</span>
         <div class="special-banner-text">
           <strong>Special Drinks</strong>
-          Iced Latte &amp; Saperavi Sour — ask your server for today's special
+          Iced Latte &amp; Saperavi Sour, ask your server for today's special
         </div>
       </div>
 
@@ -901,10 +903,43 @@
       <p class="footer-brand">Cobbler Café</p>
       <address class="footer-address" style="font-style:normal">
         34 Kote Afkhazi Street · Old Tbilisi<br>
-        Mon–Fri 10:00–22:00 · Sat–Sun 09:00–23:00
+        Mon–Fri 10:00–22:00 · Sat–Sun 09:00–23:00<br>
+        <a href="privacy.html" style="color:rgba(245,234,204,.35);font-size:0.72rem;transition:color .2s;" onmouseover="this.style.color='rgba(245,234,204,.7)'" onmouseout="this.style.color='rgba(245,234,204,.35)'">Privacy Policy</a>
       </address>
     </div>
   </footer>
+
+  <!-- ── COOKIE BANNER ── -->
+  <style>
+    #cookie-banner { display:none;position:fixed;bottom:0;left:0;right:0;z-index:500;background:#1A1008;border-top:1px solid rgba(255,208,102,0.15);padding:16px 28px; }
+    .ck-inner { max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap; }
+    .ck-text { flex:1;min-width:200px;font-size:0.8rem;color:rgba(245,234,204,0.65);line-height:1.6; }
+    .ck-text a { color:rgba(255,208,102,0.8);border-bottom:1px solid rgba(255,208,102,0.3); }
+    .ck-btns { display:flex;gap:10px;flex-shrink:0; }
+    #cookie-decline { font-size:0.78rem;font-weight:600;color:rgba(245,234,204,0.5);background:none;border:1px solid rgba(245,234,204,0.2);padding:0 18px;height:44px;border-radius:999px;cursor:pointer;font-family:inherit;transition:color 0.2s,border-color 0.2s; }
+    #cookie-decline:hover { color:rgba(245,234,204,0.8);border-color:rgba(245,234,204,0.5); }
+    #cookie-accept { font-size:0.78rem;font-weight:700;color:#fff;background:#C85068;border:none;padding:0 22px;height:44px;border-radius:999px;cursor:pointer;font-family:inherit;transition:background 0.2s; }
+    #cookie-accept:hover { background:#D86078; }
+    @media (max-width:520px) {
+      #cookie-banner { padding:16px 16px; }
+      .ck-inner { flex-direction:column;align-items:stretch;gap:12px; }
+      .ck-text { min-width:0; }
+      .ck-btns { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+      #cookie-decline, #cookie-accept { width:100%; }
+    }
+  </style>
+  <div id="cookie-banner">
+    <div class="ck-inner">
+      <p class="ck-text">
+        We use Google Fonts, which sends your IP address to Google and may set cookies.
+        <a href="privacy.html">Privacy Policy</a>
+      </p>
+      <div class="ck-btns">
+        <button id="cookie-decline">Decline</button>
+        <button id="cookie-accept">Accept</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     // ── Sticky tab active state on scroll ──
@@ -941,6 +976,22 @@
         window.scrollTo({ top: y, behavior: 'smooth' });
       });
     });
+
+    // Cookie consent
+    (function () {
+      var CONSENT_KEY = 'cobbler_cookie_consent';
+      var banner = document.getElementById('cookie-banner');
+      var stored = localStorage.getItem(CONSENT_KEY);
+      if (!stored) banner.style.display = 'block';
+      document.getElementById('cookie-accept').addEventListener('click', function () {
+        localStorage.setItem(CONSENT_KEY, 'accepted');
+        banner.style.display = 'none';
+      });
+      document.getElementById('cookie-decline').addEventListener('click', function () {
+        localStorage.setItem(CONSENT_KEY, 'declined');
+        banner.style.display = 'none';
+      });
+    })();
   </script>
 
 </body>
